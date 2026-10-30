@@ -106,14 +106,13 @@ Additional target machines can be added to the same virtual network in future pr
 Tool: 7-Zip
 
 ---
+## Step 2. Install VirtualBox
 
-## Step 2. Set Up VirtualBox
+Oracle VirtualBox was successfully installed and configured to provide a platform for creating and managing virtual machines for cybersecurity practice.
 
-Oracle VirtualBox was installed to create a virtual environment for running Kali Linux and other virtual machines needed for cybersecurity lab activities.
+## Step 3. Configure the NAT Network
 
-## Step 3. Create the NAT Network
-
-A dedicated NAT Network was created in VirtualBox.
+A separate NAT Network was set up in VirtualBox to enable virtual machines to communicate with external networks while maintaining a controlled virtual environment.
 
 Configuration:
 Network Name: NatNetwork
@@ -132,9 +131,9 @@ This will allow future attacker and target VMs to communicate within the lab.
 
 ## Step 4. Import Kali Linux
 
-The Kali Linux virtual machine was downloaded from the official Kali Linux website and imported into VirtualBox.
+The Kali Linux virtual machine was downloaded from the official Kali Linux website and successfully imported into Oracle VirtualBox.
 
-The VM network adapter was configured as follows:
+The network adapter was configured to connect the virtual machine to the previously created NAT Network using the following settings:
 
 ```text
 Adapter 1
@@ -157,10 +156,9 @@ A shared folder was also configured for transferring required files between the 
 
 ## Step 5. Configure the Kali Linux Network
 
-The Kali Linux network configuration was checked and configured with a consistent IPv4 address.
+The network configuration within Kali Linux was reviewed and adjusted to establish a consistent IPv4 addressing setup.
 
-Example configuration:
-
+The following network parameters were used
 ```text
 IP Address: 10.0.0.2
 Subnet Mask: 255.255.255.0
@@ -221,21 +219,10 @@ DNS:
 
 Documenting problems is an important part of the project.
 
-## Problem 1. Internet Connectivity After Static IP Configuration
+## Problem 1. Insufficient RAM Allocation
+ The Kali Linux virtual machine may experience slow performance, freezing, or delays when starting if insufficient memory is allocated to it.
 
-After manually configuring the IPv4 settings, Internet connectivity may fail depending on the Kali/NetworkManager configuration.
-
-One workaround used during this lab was:
-
-```bash
-sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0
-```
-
-The network connection was then restarted/rebooted and connectivity was tested again.
-
-> **Important:** Network interface and connection names may differ between systems. Students should first identify their actual connection name before running an `nmcli` command.
-
----
+Solution: i adjust the virtual machine's memory allocation in VirtualBox settings to provide enough RAM for Kali Linux to operate smoothly while leaving sufficient memory for the host computer.
 
 ## Problem 2. Kali Linux Stuck on the Boot Screen
 Kali Linux initially failed to complete the boot process due to insufficient memory allocated to the virtual machine.
@@ -256,13 +243,13 @@ Through this project, I learned how to create and configure a virtual environmen
 
 The most important concepts I learned include:
 
-1. NAT Network Configuration
+1. Static IP Address Configuration
 
-I learned how to create and configure a NAT Network in VirtualBox to allow multiple virtual machines to communicate while maintaining internet connectivity.
+I learned how to assign a fixed IPv4 address, subnet mask, default gateway, and DNS server to establish consistent network communication.
 
-2. Kali Linux Installation and Setup
+2. Shared Folder Configuration
 
-I learned how to import Kali Linux into VirtualBox, allocate system resources, and configure a shared folder.
+I learned how to create and configure shared folders in VirtualBox to enable file transfer and data exchange between the host operating system and the Kali Linux virtual machine.
 
 3. Network Configuration
 
