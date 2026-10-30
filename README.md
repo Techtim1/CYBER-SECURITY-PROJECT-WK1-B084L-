@@ -170,7 +170,7 @@ DNS: 8.8.8.8
 
 A consistent IP address makes it easier to document the lab and reference the Kali machine in future exercises.
 
-![](Workflow2.jpg)
+![](workflow2.jpg)
 
 ---
 
